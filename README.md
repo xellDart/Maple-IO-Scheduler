@@ -1,14 +1,13 @@
 # Maple-IO-Scheduler
-Adaptaciòn de Maple a la arquitecura hisi6220
-Por defecto la arquitectura qualcomm usa bool is_display_on(void), en la arquitectura hisi se compara con 1 para estado encendido y 0 para apagado, basta con remplazar por 
+Maple adaptation to hisi6220 architecture, by default qualcomm architecture uses bool is_display_on (void), in hisi architecture it is compared to 1 for on state and 0 for off state, just replace with
 
 const bool display_on = is_display_on(); -> const int display_on = lcd_pwr_status.panel_power_on;
 
-y
+and
 
 if (display_on && mdata->fifo_expire[sync][dir]) {
 
-por
+by
 
 if ((display_on == 1) && mdata->starved >= mdata->writes_starved)
 			data_dir = WRITE;
